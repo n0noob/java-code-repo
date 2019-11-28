@@ -13,7 +13,7 @@ public class BST {
 		TreeNode temp = root;
 		while(true) {
 			//System.out.println("looping " + temp.data);
-			if(data < temp.data) {
+			if(data < temp.val) {
 				if(temp.left == null) {
 					temp.left = newNode;
 					return;
@@ -34,9 +34,9 @@ public class BST {
 		TreeNode temp = root;
 		
 		while(temp != null) {
-			if(data < temp.data)
+			if(data < temp.val)
 				temp = temp.left;
-			else if(data > temp.data)
+			else if(data > temp.val)
 				temp = temp.right;
 			else {
 				System.out.println("Data (" + data + ") found!");
@@ -59,7 +59,7 @@ public class BST {
 			temp = temp.left;
 		}
 		
-		System.out.println("Current minimum element : " + temp.data);
+		System.out.println("Current minimum element : " + temp.val);
 		return;
 	}
 	
@@ -74,7 +74,7 @@ public class BST {
 			temp = temp.right;
 		}
 		
-		System.out.println("Current maximum element : " + temp.data);
+		System.out.println("Current maximum element : " + temp.val);
 		return;
 	}
 
@@ -87,7 +87,7 @@ public class BST {
 			return;
 		}
 		
-		System.out.print(node.data + " ");
+		System.out.print(node.val + " ");
 		preOrderTraversal(node.left);
 		preOrderTraversal(node.right);
 	}
@@ -98,7 +98,7 @@ public class BST {
 		}
 		
 		inOrderTraversal(node.left);
-		System.out.print(node.data + " ");
+		System.out.print(node.val + " ");
 		inOrderTraversal(node.right);
 	}
 	
@@ -109,7 +109,7 @@ public class BST {
 		
 		postOrderTraversal(node.left);
 		postOrderTraversal(node.right);
-		System.out.print(node.data + " ");
+		System.out.print(node.val + " ");
 	}
 	
 	public int findDepth(TreeNode node) {
