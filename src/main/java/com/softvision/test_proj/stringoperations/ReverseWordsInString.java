@@ -8,7 +8,6 @@ public class ReverseWordsInString {
         if(s == null || s.length() == 0)
             return s;
 
-
         //If string is not empty
         String[] str = s.split("\\.");
         String res = "";
@@ -49,8 +48,6 @@ public class ReverseWordsInString {
 
                 //Reverse the word
                 reverse(arr, idxStart, i-1);
-
-                // System.out.println(new String(arr));
 
                 //Reset the start index
                 idxStart = i + 1;
