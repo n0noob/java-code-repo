@@ -21,7 +21,7 @@ dependencies {
 group = 'com.softvision'
 version = '0.0.1-SNAPSHOT'
 description = 'test-proj'
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = JavaVersion.VERSION_11
 
 publishing {
     publications {
