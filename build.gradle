@@ -15,12 +15,18 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.13.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.14.1'
+
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
 }
 
-group = 'com.softvision'
+group = 'com'
 version = '0.0.1-SNAPSHOT'
-description = 'test-proj'
+description = 'comprog'
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 publishing {
@@ -33,4 +39,8 @@ publishing {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
 }
