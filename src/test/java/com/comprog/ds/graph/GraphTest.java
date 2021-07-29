@@ -22,5 +22,12 @@ class GraphTest {
     public void whenVertexNotPresentAndNewEdgeIsAdded_thenNewVertexAndEdgeGetsAdded() {
         graph.addEdge("Priyanka", "Alexa");
         graph.printGraph();
+
+        Vertex v1 = new Vertex("Priyanka");
+        Vertex v2 = new Vertex("Alexa");
+        assertTrue(graph.adjVertices.containsKey(v1));
+        assertTrue(graph.adjVertices.containsKey(v2));
+        assertTrue(graph.adjVertices.get(v1).contains(v2));
+        assertTrue(graph.adjVertices.get(v2).contains(v1));
     }
 }

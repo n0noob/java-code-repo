@@ -30,7 +30,7 @@ class Vertex {
 }
 
 public class Graph {
-    private Map<Vertex, List<Vertex>> adjVertices;
+    Map<Vertex, List<Vertex>> adjVertices;
 
     public Graph() {
         adjVertices = new HashMap<>();
