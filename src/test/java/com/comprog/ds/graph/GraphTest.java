@@ -1,4 +1,7 @@
 package com.comprog.ds.graph;
+import com.comprog.ds.graph.Graph;
+import com.comprog.ds.graph.Vertex;
+
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -7,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GraphTest {
 
-    private static Graph graph;
+    private static Graph<String> graph;
 
     @BeforeAll
     public static void init() {

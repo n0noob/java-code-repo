@@ -3,37 +3,27 @@ package com.comprog.ds.graph;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
-class Vertex {
-    String label;
-    public Vertex(String label) {
-        this.label = label;
-    }
 
-    @Override
-    public String toString() {
-        return label;
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Vertex vertex = (Vertex) o;
-        return label == vertex.label;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(label);
-    }
-}
-
-public class Graph {
-    Map<Vertex, List<Vertex>> adjVertices;
+public class Graph<T> {
+    Map<Vertex, List<Vertex<T>>> adjVertices;
 
     public Graph() {
         adjVertices = new HashMap<>();
+    }
+
+    public Map<Vertex, List<Vertex<T>>> get() {
+        return adjVertices;
+    }
+
+    public List<Vertex<T>> getAdjVertices(T v) {
+        return adjVertices.get(new Vertex(v));
+    }
+
+    public int getVertexCount() {
+        return adjVertices.size();
     }
 
     public void addEdge(String labelA, String labelB) {
@@ -51,13 +41,13 @@ public class Graph {
 
     }
 
-    public void removeEdge(String labelA, String labelB) {
+    public void removeEdge(T labelA, T labelB) {
 
         Vertex v1 = new Vertex(labelA);
         Vertex v2 = new Vertex(labelB);
 
-        List<Vertex> edgesFromV1 = adjVertices.get(v1);
-        List<Vertex> edgesFromV2 = adjVertices.get(v2);
+        List<Vertex<T>> edgesFromV1 = adjVertices.get(v1);
+        List<Vertex<T>> edgesFromV2 = adjVertices.get(v2);
 
         if(edgesFromV1 != null)
             edgesFromV1.remove(v2);
@@ -75,8 +65,7 @@ public class Graph {
     public void printGraph() {
         adjVertices.entrySet().stream().forEach(entry -> {
             System.out.print(entry.getKey() + " > ");
-            entry.getValue().forEach(v -> System.out.print(v + " "));
-            System.out.println();
+            System.out.println(entry.getValue().stream().map(v -> v.toString()).collect(Collectors.joining(", ", "[", "]")));
         });
     }
 
